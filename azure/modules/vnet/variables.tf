@@ -21,6 +21,7 @@ variable "address_space" {
 variable "dns_servers" {
   description = "Virtual network DNS servers"
   type = list(string)
+  default = null
 }
 
 variable "subnet_name" {

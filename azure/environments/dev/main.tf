@@ -14,7 +14,6 @@ module "vnet" {
   address_space  = var.address_space
   location       = var.location
   rg_name        = var.rg_name
-  dns_servers    = var.dns_servers
   subnet_name    = var.subnet_name
   address_prefix = var.address_prefix
 }
@@ -42,4 +41,15 @@ module "vm" {
   source_image_reference_version   = var.source_image_reference_version
   subnet_id                        = module.vnet.subnet_id
   vm_name                          = var.vm_name
+}
+
+module "nsg_rule" {
+  source                     = "../../modules/nsg_rule"
+  destination_address_prefix = "*"
+  destination_port_range     = "22"
+  nsg_name                   = module.vnet.main_nsg_name
+  nsg_rule_name              = "AllowAnySSHInbound"
+  rg_name                    = var.rg_name
+  source_address_prefix      = "*"
+  source_port_range          = "*"
 }
