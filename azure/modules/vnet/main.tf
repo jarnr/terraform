@@ -2,7 +2,7 @@ module "nsg" {
   source              = "../nsg"
   nsg_name            = "${var.vnet_name}_main"
   location            = var.location
-  rg_name = var.rg_name
+  rg_name             = var.rg_name
 }
 
 resource "azurerm_virtual_network" "main" {
@@ -15,6 +15,6 @@ resource "azurerm_virtual_network" "main" {
   subnet {
     name           = var.subnet_name
     address_prefix = var.address_prefix
-    security_group = module.nsg.nsg_name
+    security_group = module.nsg.id
   }
 }

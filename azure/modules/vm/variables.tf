@@ -62,3 +62,8 @@ variable "subnet_id" {
   description = "Subnet ID"
   type = string
 }
+
+variable "public_ip_id" {
+  description = "Public IP ID"
+  type = string
+}

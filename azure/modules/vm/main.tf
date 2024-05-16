@@ -1,9 +1,10 @@
 module "nic" {
-  source    = "../nic"
-  nic_name  = "${var.vm_name}_nic"
-  location  = var.location
-  rg_name   = var.rg_name
-  subnet_id = var.subnet_id
+  source       = "../nic"
+  nic_name     = "${var.vm_name}_nic"
+  location     = var.location
+  rg_name      = var.rg_name
+  subnet_id    = var.subnet_id
+  public_ip_id = var.public_ip_id
 }
 
 resource "azurerm_linux_virtual_machine" "vm" {
