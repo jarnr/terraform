@@ -93,3 +93,24 @@ variable "address_prefix" {
   type = string
   default = "10.0.0.0/24"
 }
+
+variable "vm_instances" {
+  description = "Map of VM instances with their specific attributes"
+  type = map(object({
+    vm_name   = string
+    vm_size   = string
+    vm_disk_size = number
+  }))
+  default = {
+    "vm1" = {
+      vm_name     = "vm1"
+      vm_size     = "Standard_B1s"
+      vm_disk_size = 30
+    }
+    "vm2" = {
+      vm_name     = "vm2"
+      vm_size     = "Standard_B2s"
+      vm_disk_size = 50
+    }
+  }
+}
